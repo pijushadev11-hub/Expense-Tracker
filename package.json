@@ -1,0 +1,12 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "Modular expense tracking application with FastAPI backend",
+  "scripts": {
+    "dev:backend": "cd backend && python run.py",
+    "dev:frontend": "cd frontend && npm start",
+    "install:backend": "cd backend && pip install -r requirements.txt",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend"
+  }
+}

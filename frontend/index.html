@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        
+        const API_URL = 'http://localhost:8000/api';
+        
+        const auth = {
+            testLogin: () => window.location.href = `${API_URL}/auth/google`,
+            googleLogin: () => window.location.href = `${API_URL}/auth/google`,
+            appleLogin: () => window.location.href = `${API_URL}/auth/apple`,
+        };
+        
+        const Login = () => (
+            <div className="min-h-screen flex items-center justify-center bg-gray-50">
+                <div className="max-w-md w-full space-y-8">
+                    <h2 className="text-center text-3xl font-bold text-gray-900">
+                        Sign in to Expense Tracker
+                    </h2>
+                    <div className="space-y-4">
+                        <button
+                            onClick={auth.testLogin}
+                            className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
+                        >
+                            Test Login
+                        </button>
+                        <button
+                            onClick={auth.googleLogin}
+                            className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
+                        >
+                            Continue with Google
+                        </button>
+                        <button
+                            onClick={auth.appleLogin}
+                            className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800"
+                        >
+                            Continue with Apple
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+        
+        const App = () => <Login />;
+        
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
